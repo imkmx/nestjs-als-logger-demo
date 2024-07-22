@@ -20,7 +20,7 @@ import { traceMiddleware } from './common/middleware/trace.middleware'
   ],
 })
 export class AppModule implements NestModule {
-  constructor(private readonly als: AsyncLocalStorage<any>) {}
+  constructor(private readonly als: AsyncLocalStorage<Map<string, string>>) {}
 
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(traceMiddleware(this.als)).forRoutes('*')
